@@ -277,7 +277,7 @@ function App() {
                   />
                   <br />
                   <Field
-                    type="text"
+                    type="password"
                     name="pass"
                     placeholder="Enter Your Password"
                     className="text-xl text-black border p-2 mb-4 rounded-md"
