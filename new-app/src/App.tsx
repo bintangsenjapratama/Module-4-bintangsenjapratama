@@ -1,12 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Field, Formik, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 function App() {
+
+  // fullname
+  // email
+  // date of bird
+  const signupScheme = Yup.object().shape({
+    fullname: Yup.string()
+    .required('Required to fill !!!')
+  })
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -17,7 +27,17 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
+        <h1>Sign Up</h1>
+        <div>
+          <Formik
+            initialValues={{
+              fullname:''
+            }}
+            onSubmit={(values, actions) => {} }>
+              
+            </Formik>
+        </div>
       </header>
     </div>
   );
