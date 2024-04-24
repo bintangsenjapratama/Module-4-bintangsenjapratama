@@ -1,1 +1,13 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/YS8Z4-23)
+# The Form
+
+Visit site here :
+
+Hello, Welcome, this is my first multiple form build using React.
+
+## Usage
+
+You can see the project by cloning this repository and then cd to new-app folder and run "npm start" on the terminal:
+
+```bash
+git clone https://github.com/RevoU-FSSE-4/Module-4-bintangsenjapratama.git
+```
