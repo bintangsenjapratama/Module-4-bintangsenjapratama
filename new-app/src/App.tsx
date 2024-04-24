@@ -102,33 +102,54 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 className="text-xl">Sign Up</h1>
+        <h1 className="text-4xl font-bold">Sign Up</h1>
+        <br />
         <div>
           <Formik
             initialValues={{
               fullname: "",
-              dateOfBirth: "",
               email: "",
+              dateOfBirth: "",
+              street: "",
+              city: "",
+              state: "",
+              zipcode: "",
+              username: "",
               pass: "",
             }}
             validationSchema={SignupScheme}
             onSubmit={(values, actions) => {
               console.log("register", {
                 fullname: values.fullname,
-                dateOfBirth: values.dateOfBirth,
                 email: values.email,
+                dateOfBirth: values.dateOfBirth,
+                street: values.street,
+                city: values.city,
+                state: values.state,
+                zipcode: values.zipcode,
+                username: values.username,
                 pass: values.pass,
               });
               const data = {
                 fullname: values.fullname,
-                dateOfBirth: values.dateOfBirth,
                 email: values.email,
+                dateOfBirth: values.dateOfBirth,
+                street: values.street,
+                city: values.city,
+                state: values.state,
+                zipcode: values.zipcode,
+                username: values.username,
                 pass: values.pass,
               };
               if (
                 values.fullname &&
-                values.dateOfBirth &&
                 values.email &&
+                values.dateOfBirth &&
+                values.street &&
+                values.city &&
+                values.state &&
+                values.zipcode &&
+                values.username &&
                 values.pass
               )
                 handleSubmit(data);
@@ -141,30 +162,42 @@ function App() {
                     Multi step form - Step {step}
                   </h2>
                   <Field
-                    name="fullname"
                     type="text"
+                    name="fullname"
                     placeholder="Enter Your Full Name"
                     className="text-xl text-black border p-2 mb-4 rounded-md"
                   />
-                  <>
-                    <ErrorMessage name="name" component="div" />
-                  </>
+
+                  <ErrorMessage
+                    name="fullname"
+                    component="div"
+                    className="text-xl"
+                  />
+                  <br />
                   <Field
                     type="email"
                     name="email"
                     placeholder="Enter Your Email"
                     className="text-xl text-black border p-2 mb-4 rounded-md"
                   />
-                  <>
-                    <ErrorMessage name="email" component="div" />
-                  </>
+
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="text-xl"
+                  />
+                  <br />
                   <Field
-                    type="password"
-                    name="pass"
-                    placeholder="Enter Your password"
+                    type="date"
+                    name="dateOfBirth"
+                    placeholder="Enter Your Date of Birth"
                     className="text-xl text-black border p-2 mb-4 rounded-md"
                   />
-                  <ErrorMessage name="pass" component="div" />
+                  <ErrorMessage
+                    name="dateOfBirth"
+                    component="div"
+                    className="text-xl"
+                  />
                 </div>
               )}
 
@@ -174,12 +207,87 @@ function App() {
                     Multi step form - Step {step}
                   </h2>
                   <Field
-                    type="password"
-                    name="pass"
-                    placeholder="Enter Your password"
-                    className="border border-gray-300 p-2 mb-4 rounded-md"
+                    type="text"
+                    name="street"
+                    placeholder="Enter Your Street Address"
+                    className="text-xl text-black border p-2 mb-4 rounded-md"
                   />
-                  <ErrorMessage name="pass" component="div" />
+
+                  <ErrorMessage
+                    name="street"
+                    component="div"
+                    className="text-xl"
+                  />
+                  <br />
+                  <Field
+                    type="text"
+                    name="city"
+                    placeholder="Enter Your City"
+                    className="text-xl text-black border p-2 mb-4 rounded-md"
+                  />
+
+                  <ErrorMessage
+                    name="city"
+                    component="div"
+                    className="text-xl"
+                  />
+                  <br />
+                  <Field
+                    type="text"
+                    name="state"
+                    placeholder="Enter Your State"
+                    className="text-xl text-black border p-2 mb-4 rounded-md"
+                  />
+                  <ErrorMessage
+                    name="state"
+                    component="div"
+                    className="text-xl"
+                  />
+                  <br />
+                  <Field
+                    type="number"
+                    name="zipcode"
+                    placeholder="Enter Your Zip Code"
+                    className="text-xl text-black border p-2 mb-4 rounded-md"
+                  />
+                  <ErrorMessage
+                    name="zipcode"
+                    component="div"
+                    className="text-xl"
+                  />
+                </div>
+              )}
+
+              {step === 3 && (
+                <div className="flex flex-col p-8 w-96 border-solid border-2">
+                  <h2 className="text-center text-xl my-3 font-semibold mb-8">
+                    Multi step form - Step {step}
+                  </h2>
+                  <Field
+                    type="text"
+                    name="username"
+                    placeholder="Enter Your Username"
+                    className="text-xl text-black border p-2 mb-4 rounded-md"
+                  />
+
+                  <ErrorMessage
+                    name="username"
+                    component="div"
+                    className="text-xl"
+                  />
+                  <br />
+                  <Field
+                    type="text"
+                    name="pass"
+                    placeholder="Enter Your Password"
+                    className="text-xl text-black border p-2 mb-4 rounded-md"
+                  />
+
+                  <ErrorMessage
+                    name="pass"
+                    component="div"
+                    className="text-xl"
+                  />
                 </div>
               )}
 
@@ -187,7 +295,7 @@ function App() {
                 <button
                   type="button"
                   onClick={prevStep}
-                  className="bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 w-1/2 mt-3 "
+                  className="bg-orange-500 text-white font-semibold py-2 rounded-md hover:bg-orange-700 transition-colors duration-300 w-1/2 mt-3 "
                 >
                   Previous
                 </button>
@@ -200,14 +308,14 @@ function App() {
                   disabled={
                     fullname !== "" || email !== "" || dateOfBirth !== ""
                   }
-                  className="bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 w-1/2 mt-3 "
+                  className="bg-orange-500 text-white font-semibold py-2 rounded-md hover:bg-orange-700 transition-colors duration-300 w-1/2 mt-3 "
                 >
                   Next
                 </button>
               ) : (
                 <button
                   type="submit"
-                  className="bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 w-1/2 mt-3 "
+                  className="bg-orange-500 text-white font-semibold py-2 rounded-md hover:bg-orange-700 transition-colors duration-300 w-1/2 mt-3 "
                 >
                   Submit
                 </button>
